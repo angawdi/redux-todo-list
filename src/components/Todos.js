@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { toggleTodo } from '../actions/todoActions';
 
 class Todos extends Component {
   
@@ -7,7 +9,9 @@ class Todos extends Component {
       <div>
         <ul>
           {this.props.todos.map(todo => (
-            <li key={todo.id}>{todo.task}: {todo.completed.toString()}</li>
+            <li key={todo.id} onClick={}=> this.props.toggleTodo(todo.id)>
+            {todo.task}: {todo.completed.toString()}
+            </li>
           ))}
         </ul>
       </div>
