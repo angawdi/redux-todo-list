@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import todoActions from './actions/todoActions';
 
 class TodoForm extends Component {
   state = {
@@ -12,7 +15,7 @@ class TodoForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addTodo(this.state.newTodo)
+    this.props.actions.addTodo(this.state.newTodo)
     this.setState({ newTodo: '' })
   }
 
@@ -32,4 +35,10 @@ class TodoForm extends Component {
 
 }
 
-export default TodoForm
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(todoActions, dispatch)
+  }
+}
+
+export default connect(null, mapDispatchToProps) (TodoForm)
