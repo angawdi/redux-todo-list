@@ -35,10 +35,5 @@ class TodoForm extends Component {
 
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(todoActions, dispatch)
-  }
-}
 
-export default connect(null, mapDispatchToProps) (TodoForm)
+export default connect(null, { addTodo}}) (TodoForm)
